@@ -13,9 +13,21 @@ namespace LAB.Controllers
 {
     public class 客戶聯絡人Controller : BaseController
     {
+        [HandleError(ExceptionType = typeof(ArgumentNullException), View = "ErrorNull")]
         // GET: 客戶聯絡人
-        public ActionResult Index()
+        public ActionResult Index(string s)
         {
+            if (string.IsNullOrEmpty(s))
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (s == "null")
+            {
+                throw new NoNullAllowedException();
+            }
+
+            
             var 客戶聯絡人 = RepoContact.All().Include(客 => 客.客戶資料);
             return View(客戶聯絡人.ToList());
         }
@@ -49,6 +61,7 @@ namespace LAB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,客戶Id,職稱,姓名,Email,手機,電話,IsDeleted")] 客戶聯絡人 客戶聯絡人)
         {
+            //
             if (ModelState.IsValid)
             {
                 RepoContact.Add(客戶聯絡人);
@@ -81,16 +94,21 @@ namespace LAB.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,客戶Id,職稱,姓名,Email,手機,電話,IsDeleted")] 客戶聯絡人 客戶聯絡人)
+        public ActionResult Edit(int id, FormCollection form)
         {
-            if (ModelState.IsValid)
+            var contact = RepoContact.Find(id);
+
+            // "Id,客戶Id,職稱,姓名,Email,手機,電話,IsDeleted"
+            //if (ModelState.IsValid)
+            if (TryUpdateModel(contact, "職稱,姓名,Email,手機,電話".Split(',')))
             {
-                RepoContact.UnitOfWork.Context.Entry(客戶聯絡人).State = EntityState.Modified;
+                //RepoContact.UnitOfWork.Context.Entry(客戶聯絡人).State = EntityState.Modified;
                 RepoContact.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
-            ViewBag.客戶Id = new SelectList(RepoCust.All(), "Id", "客戶名稱", 客戶聯絡人.客戶Id);
-            return View(客戶聯絡人);
+
+            ViewBag.客戶Id = new SelectList(RepoCust.All(), "Id", "客戶名稱", contact.客戶Id);
+            return View(contact);
         }
 
         // GET: 客戶聯絡人/Delete/5
@@ -136,4 +154,5 @@ namespace LAB.Controllers
 
         }
     }
+
 }

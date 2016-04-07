@@ -28,12 +28,14 @@
                     <li>@Html.ActionLink("客戶分類", "Index", "客戶分類")</li>
                     
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <hr/>
+        Executing time (ms): @ViewBag.ExecutingHowLong
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET APP</p>
         </footer>

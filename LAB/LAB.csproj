@@ -55,7 +55,35 @@
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
       <Private>True</Private>
@@ -70,6 +98,10 @@
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -145,8 +177,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ExecTimeLogAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginViewModel.cs" />
+    <Compile Include="Controllers\ViewTestController.cs" />
+    <Compile Include="Controllers\VTController.cs" />
     <Compile Include="Controllers\客戶分類Controller.cs" />
     <Compile Include="Controllers\客戶聯絡人Controller.cs" />
     <Compile Include="Controllers\客戶資料Controller.cs" />
@@ -245,12 +282,163 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="calendar.html" />
+    <Content Include="chart.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\chosen.css" />
+    <Content Include="css\elfinder.min.css" />
+    <Content Include="css\elfinder.theme.css" />
+    <Content Include="css\font-awesome-ie7.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fullcalendar.css" />
+    <Content Include="css\glyphicons.css" />
+    <Content Include="css\halflings.css" />
+    <Content Include="css\ie.css" />
+    <Content Include="css\ie9.css" />
+    <Content Include="css\jquery-ui-1.8.21.custom.css" />
+    <Content Include="css\jquery.cleditor.css" />
+    <Content Include="css\jquery.gritter.css" />
+    <Content Include="css\jquery.iphone.toggle.css" />
+    <Content Include="css\jquery.noty.css" />
+    <Content Include="css\noty_theme_default.css" />
+    <Content Include="css\style-forms.css" />
+    <Content Include="css\style-responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\uniform.default.css" />
+    <Content Include="css\uploadify.css" />
     <Content Include="favicon.ico" />
+    <Content Include="file-manager.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="font\glyphicons-regular.svg" />
+    <Content Include="font\glyphiconshalflings-regular.svg" />
+    <Content Include="form.html" />
+    <Content Include="gallery.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="icon.html" />
+    <Content Include="img\arrows-active.png" />
+    <Content Include="img\arrows-normal.png" />
+    <Content Include="img\avatar.jpg" />
+    <Content Include="img\bg-input-focus.png" />
+    <Content Include="img\bg-input.png" />
+    <Content Include="img\bg-login.jpg" />
+    <Content Include="img\browser-chrome-big.png" />
+    <Content Include="img\browser-firefox-big.png" />
+    <Content Include="img\browser-ie.png" />
+    <Content Include="img\browser-opera.png" />
+    <Content Include="img\browser-safari.png" />
+    <Content Include="img\buttons.gif" />
+    <Content Include="img\chat-left%402x.png" />
+    <Content Include="img\chat-left-metro%402x.png" />
+    <Content Include="img\chat-left-metro.png" />
+    <Content Include="img\chat-left.png" />
+    <Content Include="img\chat-right%402x.png" />
+    <Content Include="img\chat-right-metro%402x.png" />
+    <Content Include="img\chat-right-metro.png" />
+    <Content Include="img\chat-right.png" />
+    <Content Include="img\chosen-sprite.png" />
+    <Content Include="img\close-button-white.png" />
+    <Content Include="img\close-button.png" />
+    <Content Include="img\crop.gif" />
+    <Content Include="img\dialogs.png" />
+    <Content Include="img\gallery\photo1.jpg" />
+    <Content Include="img\gallery\photo10.jpg" />
+    <Content Include="img\gallery\photo11.jpg" />
+    <Content Include="img\gallery\photo12.jpg" />
+    <Content Include="img\gallery\photo13.jpg" />
+    <Content Include="img\gallery\photo2.jpg" />
+    <Content Include="img\gallery\photo3.jpg" />
+    <Content Include="img\gallery\photo4.jpg" />
+    <Content Include="img\gallery\photo5.jpg" />
+    <Content Include="img\gallery\photo6.jpg" />
+    <Content Include="img\gallery\photo7.jpg" />
+    <Content Include="img\gallery\photo8.jpg" />
+    <Content Include="img\gallery\photo9.jpg" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\glyphicons-white.png" />
+    <Content Include="img\glyphicons-white.svg" />
+    <Content Include="img\glyphicons.png" />
+    <Content Include="img\glyphicons.svg" />
+    <Content Include="img\glyphicons_halflings-white.png" />
+    <Content Include="img\glyphicons_halflings-white.svg" />
+    <Content Include="img\glyphicons_halflings.png" />
+    <Content Include="img\glyphicons_halflings.svg" />
+    <Content Include="img\icons-big.png" />
+    <Content Include="img\icons-small.png" />
+    <Content Include="img\iphone-style-checkboxes\off-63584.png" />
+    <Content Include="img\iphone-style-checkboxes\on-63584.png" />
+    <Content Include="img\iphone-style-checkboxes\slider_center-63584.png" />
+    <Content Include="img\iphone-style-checkboxes\slider_left-63584.png" />
+    <Content Include="img\iphone-style-checkboxes\slider_right-63584.png" />
+    <Content Include="img\progress.gif" />
+    <Content Include="img\quicklook-bg.png" />
+    <Content Include="img\quicklook-icons.png" />
+    <Content Include="img\quote.png" />
+    <Content Include="img\resize.png" />
+    <Content Include="img\slider_r8.png" />
+    <Content Include="img\spinner-mini.gif" />
+    <Content Include="img\sprite.png" />
+    <Content Include="img\timeline-bg.png" />
+    <Content Include="img\timeline-left-arrow%402x.png" />
+    <Content Include="img\timeline-left-arrow.png" />
+    <Content Include="img\timeline-right-arrow%402x.png" />
+    <Content Include="img\timeline-right-arrow.png" />
+    <Content Include="img\toolbar.gif" />
+    <Content Include="img\toolbar.png" />
+    <Content Include="img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="img\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="img\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="img\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="img\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="img\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="img\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="img\ui-icons_222222_256x240.png" />
+    <Content Include="img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="img\ui-icons_454545_256x240.png" />
+    <Content Include="img\ui-icons_888888_256x240.png" />
+    <Content Include="img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="img\uploadify-cancel.png" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\counter.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\excanvas.js" />
+    <Content Include="js\fullcalendar.min.js" />
+    <Content Include="js\jquery-1.9.1.min.js" />
+    <Content Include="js\jquery-migrate-1.0.0.min.js" />
+    <Content Include="js\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="js\jquery.chosen.min.js" />
+    <Content Include="js\jquery.cleditor.min.js" />
+    <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.dataTables.min.js" />
+    <Content Include="js\jquery.elfinder.min.js" />
+    <Content Include="js\jquery.flot.js" />
+    <Content Include="js\jquery.flot.pie.js" />
+    <Content Include="js\jquery.flot.resize.min.js" />
+    <Content Include="js\jquery.flot.stack.js" />
+    <Content Include="js\jquery.gritter.min.js" />
+    <Content Include="js\jquery.imagesloaded.js" />
+    <Content Include="js\jquery.iphone.toggle.js" />
+    <Content Include="js\jquery.knob.modified.js" />
+    <Content Include="js\jquery.masonry.min.js" />
+    <Content Include="js\jquery.noty.js" />
+    <Content Include="js\jquery.raty.min.js" />
+    <Content Include="js\jquery.sparkline.min.js" />
+    <Content Include="js\jquery.ui.touch-punch.js" />
+    <Content Include="js\jquery.uniform.min.js" />
+    <Content Include="js\jquery.uploadify-3.1.min.js" />
+    <Content Include="js\modernizr.js" />
+    <Content Include="js\retina.js" />
+    <Content Include="login.html" />
+    <Content Include="messages.html" />
     <Content Include="Models\CustomerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CustomerModel.edmx</DependentUpon>
@@ -271,6 +459,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="widgets.html" />
     <EntityDeploy Include="Models\CustomerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CustomerModel.Designer.cs</LastGenOutput>
@@ -278,6 +467,18 @@
     <Content Include="Models\CustomerModel.edmx.diagram">
       <DependentUpon>CustomerModel.edmx</DependentUpon>
     </Content>
+    <Content Include="font\fontawesome-webfont-0.eot" />
+    <Content Include="font\fontawesome-webfont-62877.eot" />
+    <Content Include="font\fontawesome-webfont-62877.ttf" />
+    <Content Include="font\fontawesome-webfont-62877.woff" />
+    <Content Include="font\glyphicons-regular-0.eot" />
+    <Content Include="font\glyphicons-regular.eot" />
+    <Content Include="font\glyphicons-regular.ttf" />
+    <Content Include="font\glyphicons-regular.woff" />
+    <Content Include="font\glyphiconshalflings-regular-0.eot" />
+    <Content Include="font\glyphiconshalflings-regular.eot" />
+    <Content Include="font\glyphiconshalflings-regular.ttf" />
+    <Content Include="font\glyphiconshalflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -290,6 +491,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="submenu.html" />
+    <Content Include="submenu2.html" />
+    <Content Include="submenu3.html" />
+    <Content Include="table.html" />
+    <Content Include="tasks.html" />
+    <Content Include="typography.html" />
+    <Content Include="ui.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -324,6 +532,12 @@
     <Content Include="Views\客戶資料\Details.cshtml" />
     <Content Include="Views\客戶資料\Edit.cshtml" />
     <Content Include="Views\客戶資料\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\ErrorNull.cshtml" />
+    <Content Include="Views\ViewTest\Index.cshtml" />
+    <Content Include="Views\VT\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

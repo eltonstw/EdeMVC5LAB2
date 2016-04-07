@@ -7,6 +7,8 @@ using LAB.Models;
 
 namespace LAB.Controllers
 {
+    [Authorize]
+    [ExecTimeLog]
     public class BaseController : Controller
     {
         protected 客戶分類Repository RepoCategory = RepositoryHelper.Get客戶分類Repository();

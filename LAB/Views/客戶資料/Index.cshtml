@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LAB.Models.客戶資料>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "客戶資料";
 }
 
 <h2>Index</h2>
@@ -69,3 +69,6 @@
 
 </table>
 
+@section breadcrumb{
+    <li>@Html.ActionLink("客戶資料", "Index", "客戶資料")</li>
+}
